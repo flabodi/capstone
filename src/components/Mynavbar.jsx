@@ -31,9 +31,9 @@ function MyNavbar() {
               <Button variant="outline-light">Cerca</Button>
             </Form>
             <Link to="/cart" className="text-decoration-none">
-            <button className="btn btn-secondary ms-3 ">
-              <i className="bi bi-basket3 px-3"></i>
-            </button>
+              <button className="btn btn-secondary ms-3 ">
+                <i className="bi bi-basket3 px-3"></i>
+              </button>
             </Link>
           </Nav>
         </Navbar.Collapse>

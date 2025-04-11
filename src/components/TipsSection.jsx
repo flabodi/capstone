@@ -1,68 +1,79 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useEffect, useState } from 'react';
+import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTipsStories } from "../redux/feauters/tipsStories/tipsStoriesSlice";
 
 function TipsSection() {
-  return (
-    <>
-      <div className="tips-section pb-3 ">
-        <Container >
-          <h2 className="text-center mt-4">I NOSTREI CONSIGLI PER VOI</h2>
-          <Card className="my-4 tips-card ">
-            <Row className="g-0">
-              <Col md={4}>
-                <Card.Img
-                  src="https://plus.unsplash.com/premium_photo-1661540515873-0d7c4e07891a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGRyaW5rfGVufDB8fDB8fHww"
-                  alt="Drink"
-                />
-              </Col>
-              <Col md={8}>
-                <Card.Body>
-                  <Card.Title>Provaci a casa</Card.Title>
-                  <Card.Text>
-                    Un mix perfetto di sapori autentici e arte della
-                    miscelazione. Vivi l’esperienza di un cocktail premium
-                    ovunque tu sia.
-                  </Card.Text>
-                </Card.Body>
-              </Col>
-            </Row>
-          </Card>
-          <Row className="g-0">
-            <Col md={6}>
-          <Card style={{ width: "21rem" }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">
-                Card Subtitle
-              </Card.Subtitle>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          </Col>
-          <Col md={6}>
-          <Card style={{ width: "21rem" }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">
-                Card Subtitle
-              </Card.Subtitle>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          </Col>
-          </Row>
-          <div className="text-center">
-          <Button className="btn mt-3  ">leggi di piu </Button>
-          </div>
-        </Container>
+  const dispatch = useDispatch();
+  // Estrai dallo store Redux i dati relativi alle tips
+  const { tipsStories, status, error } = useSelector((state) => state.tipsStories);
+  const [expandedTips, setExpandedTips] = useState({});
+
+  useEffect(() => {
+    // Se lo stato è "idle", esegui il thunk per recuperare i tips
+    if (status === "idle") {
+      dispatch(fetchTipsStories());
+    }
+  }, [dispatch, status]);
+
+  // Se i dati sono in caricamento, mostra uno spinner
+  if (status === "loading") {
+    return (
+      <div className="d-flex justify-content-center">
+        <Spinner animation="border" />
       </div>
-    </>
+    );
+  }
+
+  // Se c'è un errore, visualizzalo
+  if (status === "failed") {
+    return (
+      <div className="text-center">
+        <h3>Error: {error}</h3>
+      </div>
+    );
+  }
+
+  const toggleExpand = (id) => {
+    setExpandedTips((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  return (
+    <Container className="my-5">
+      <Row className="g-4">
+        {tipsStories.map((tip) => (
+          <Col key={tip.id} md={6}>
+            <Card className="h-100 shadow-sm">
+              <Card.Body>
+                <Card.Title>{tip.title}</Card.Title>
+                <Card.Text
+                  style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: expandedTips[tip.id] ? 'unset' : 6,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                >
+                  {tip.content}
+                </Card.Text>
+                <Button
+                  variant="link"
+                  className="p-0"
+                  onClick={() => toggleExpand(tip.id)}
+                >
+                  {expandedTips[tip.id] ? 'Mostra meno' : 'Leggi di più'}
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
-}
+};
 
 export default TipsSection;

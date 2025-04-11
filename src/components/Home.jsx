@@ -24,12 +24,9 @@ function Home() {
       <Container fluid className="mx-3 ">
         <h2 className="mt-5 mb-3">Prodotti in evidenza</h2>
         <ProductsList />
-        
       </Container>
       <Container fluid className="my-5">
-
-        <TipsSection  />
-      
+        <TipsSection />
       </Container>
     </>
   );

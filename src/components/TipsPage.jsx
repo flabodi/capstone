@@ -6,7 +6,7 @@ function TipsPage () {
     
    <h1>tips </h1>   
    <TipsSection/>
-   <TipsSection/>
+
     </>
     );
     
