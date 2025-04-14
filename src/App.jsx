@@ -9,6 +9,7 @@ import CartPage from "./components/CartPage";
 import TipsPage from "./components/TipsPage";
 import Products from "./components/Products";
 import ProductPage from "./components/ProductPage";
+import ThankYouPage from "./components/ThankYouPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/tips" element={<TipsPage />} />
         <Route path="/prodotto/:id" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
       </Routes>
 
       <Footer />

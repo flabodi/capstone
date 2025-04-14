@@ -3,6 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../redux/feauters/products/productsSlice";
 import { Col, Container, Row, Accordion, Spinner } from "react-bootstrap";
+import { addToCart } from "../redux/feauters/cart/cartSlice";
+
+
 
 function ProductDetail() {
   const { id } = useParams();
@@ -58,7 +61,10 @@ function ProductDetail() {
       )
       .join("\n");
   };
-
+  const handleAddToCart = () => {
+    dispatch(addToCart(currentProduct));
+    alert(`${currentProduct.name} aggiunto al carrello!`);
+  };
   return (
     <>
       <Container fluid>
@@ -95,10 +101,7 @@ function ProductDetail() {
               {/* Se hai altri dati per questi campi, puoi aggiungerli qui */}
             </ul>
 
-            <button
-              className="btn btn-primary"
-              onClick={() => navigate("/cart")}
-            >
+            <button className="btn btn-primary" onClick={handleAddToCart}>
               Add to Cart
             </button>
           </Col>

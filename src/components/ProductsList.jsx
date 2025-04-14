@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { Card, Col, Row, Spinner } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../redux/feauters/products/productsSlice";
+import { addToCart } from "../redux/feauters/cart/cartSlice";
 
 function ProductsList() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  
 
   const { products, status, error } = useSelector((state) => state.products);
 
@@ -32,6 +33,13 @@ function ProductsList() {
     );
   }
 
+  const handleAddToCart = (e, product) => {
+    e.preventDefault(); // evita che il Link venga eseguito
+    e.stopPropagation(); // blocca la propagazione del click
+    dispatch(addToCart(product));
+    // Opzionale: mostra un messaggio di conferma
+    alert(`${product.name} aggiunto al carrello!`);
+  };
   return (
     <>
       <Row xs={1} md={2} className="g-4">
@@ -54,11 +62,7 @@ function ProductsList() {
                     </Card.Title>
                     <button
                       className="btn btn-secondary me-3"
-                      onClick={(e) => {
-                        e.preventDefault(); // evita che il Link venga eseguito
-                        e.stopPropagation(); // blocca la propagazione del click
-                        navigate("/cart");
-                      }}
+                      onClick={(e) => handleAddToCart(e, product)}
                     >
                       <i className="bi bi-basket3 px-3"></i>
                     </button>

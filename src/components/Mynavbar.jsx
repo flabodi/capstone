@@ -1,7 +1,11 @@
-import { Container, Navbar, Nav, Form, Button } from "react-bootstrap";
+import { Container, Navbar, Nav, Form, Button, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function MyNavbar() {
+  const { items } = useSelector((state) => state.cart);
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <Navbar expand="md" className="mx-5 mt-3 rounded-4 color-nav">
       <Container>
@@ -31,8 +35,13 @@ function MyNavbar() {
               <Button variant="outline-light">Cerca</Button>
             </Form>
             <Link to="/cart" className="text-decoration-none">
-              <button className="btn btn-secondary ms-3 ">
+              <button className="btn btn-secondary ms-3 position-relative">
                 <i className="bi bi-basket3 px-3"></i>
+                {totalItems > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {totalItems}
+                  </span>
+                )}
               </button>
             </Link>
           </Nav>
