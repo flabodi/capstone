@@ -5,7 +5,9 @@ import { fetchCategories } from "../redux/feauters/categories/categoriesSlice";
 
 function Categories() {
   const dispatch = useDispatch();
-  const { categories, status, error } = useSelector((state) => state.categories);
+  const { categories, status, error } = useSelector(
+    (state) => state.categories
+  );
 
   useEffect(() => {
     if (status === "idle") {
@@ -38,12 +40,11 @@ function Categories() {
             <Col md={4} key={cat.id}>
               <Card className="text-white rounded-4 overflow-hidden">
                 {/* Usiamo Unsplash per generare un'immagine dinamica in base alla categoria */}
-                <Card.Img 
-                  src={cat.cover_categories} 
-                  alt={cat.category} 
-                />
+                <Card.Img src={cat.cover_categories} alt={cat.category} />
                 <Card.ImgOverlay className="d-flex flex-column justify-content-end bg-dark bg-opacity-25">
-                  <Card.Title className="fs-4 fw-bold">{cat.category}</Card.Title>
+                  <Card.Title className="fs-4 fw-bold">
+                    {cat.category}
+                  </Card.Title>
                 </Card.ImgOverlay>
               </Card>
             </Col>

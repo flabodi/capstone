@@ -1,14 +1,11 @@
 import TipsSection from "./TipsSection";
 
-function TipsPage () {
-    return (
+function TipsPage() {
+  return (
     <>
-    
-   <h1>tips </h1>   
-   <TipsSection/>
-
+      <h1>tips </h1>
+      <TipsSection />
     </>
-    );
-    
-    }
-    export default TipsPage  
+  );
+}
+export default TipsPage;

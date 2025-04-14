@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../redux/feauters/products/productsSlice";
@@ -8,7 +8,7 @@ function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const { currentProduct, productStatus, productError } = useSelector(
     (state) => state.products
   );
@@ -29,7 +29,9 @@ function ProductDetail() {
     return (
       <div className="text-center">
         <h3>Error: {productError}</h3>
-        <button className="btn btn-secondary" onClick={() => navigate(-1)}>Torna indietro</button>
+        <button className="btn btn-secondary" onClick={() => navigate(-1)}>
+          Torna indietro
+        </button>
       </div>
     );
   }
@@ -38,18 +40,23 @@ function ProductDetail() {
     return (
       <div className="text-center">
         <h3>Prodotto non trovato</h3>
-        <button className="btn btn-secondary" onClick={() => navigate(-1)}>Torna indietro</button>
+        <button className="btn btn-secondary" onClick={() => navigate(-1)}>
+          Torna indietro
+        </button>
       </div>
     );
   }
 
   // Funzione per estrarre il testo dalla descrizione strutturata
   const getDescriptionText = () => {
-    if (!currentProduct.description || !currentProduct.description.length) return "";
-    
-    return currentProduct.description.map(paragraph => 
-      paragraph.children.map(child => child.text).join("")
-    ).join("\n");
+    if (!currentProduct.description || !currentProduct.description.length)
+      return "";
+
+    return currentProduct.description
+      .map((paragraph) =>
+        paragraph.children.map((child) => child.text).join("")
+      )
+      .join("\n");
   };
 
   return (
@@ -88,7 +95,10 @@ function ProductDetail() {
               {/* Se hai altri dati per questi campi, puoi aggiungerli qui */}
             </ul>
 
-            <button className="btn btn-primary" onClick={() => navigate("/cart")}>
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate("/cart")}
+            >
               Add to Cart
             </button>
           </Col>
@@ -104,15 +114,14 @@ function ProductDetail() {
 
               <Accordion.Item eventKey="1">
                 <Accordion.Header>Descrizione</Accordion.Header>
-                <Accordion.Body>
-                  {getDescriptionText()}
-                </Accordion.Body>
+                <Accordion.Body>{getDescriptionText()}</Accordion.Body>
               </Accordion.Item>
 
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Fallo a casa</Accordion.Header>
                 <Accordion.Body>
-                  {currentProduct.tips || "I nostri drink arrivano pronti da essere bevuti. Il consiglio è quello di non usare ghiaccio e di berlo molto freddo; mettilo in congelatore, non ghiaccerà."}
+                  {currentProduct.tips ||
+                    "I nostri drink arrivano pronti da essere bevuti. Il consiglio è quello di non usare ghiaccio e di berlo molto freddo; mettilo in congelatore, non ghiaccerà."}
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -129,7 +138,9 @@ function ProductDetail() {
             <ul>
               <li>Spedizione gratuita per ordini superiori a 50€</li>
               <li>Drink artigianali pronti da gustare, ovunque tu sia</li>
-              <li>Miscelati con ingredienti premium da bartender professionisti</li>
+              <li>
+                Miscelati con ingredienti premium da bartender professionisti
+              </li>
             </ul>
           </Col>
         </Row>

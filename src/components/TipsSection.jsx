@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTipsStories } from "../redux/feauters/tipsStories/tipsStoriesSlice";
@@ -6,7 +6,9 @@ import { fetchTipsStories } from "../redux/feauters/tipsStories/tipsStoriesSlice
 function TipsSection() {
   const dispatch = useDispatch();
   // Estrai dallo store Redux i dati relativi alle tips
-  const { tipsStories, status, error } = useSelector((state) => state.tipsStories);
+  const { tipsStories, status, error } = useSelector(
+    (state) => state.tipsStories
+  );
   const [expandedTips, setExpandedTips] = useState({});
 
   useEffect(() => {
@@ -51,11 +53,11 @@ function TipsSection() {
                 <Card.Title>{tip.title}</Card.Title>
                 <Card.Text
                   style={{
-                    display: '-webkit-box',
-                    WebkitLineClamp: expandedTips[tip.id] ? 'unset' : 6,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
+                    display: "-webkit-box",
+                    WebkitLineClamp: expandedTips[tip.id] ? "unset" : 6,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                   }}
                 >
                   {tip.content}
@@ -65,7 +67,7 @@ function TipsSection() {
                   className="p-0"
                   onClick={() => toggleExpand(tip.id)}
                 >
-                  {expandedTips[tip.id] ? 'Mostra meno' : 'Leggi di più'}
+                  {expandedTips[tip.id] ? "Mostra meno" : "Leggi di più"}
                 </Button>
               </Card.Body>
             </Card>
@@ -74,6 +76,6 @@ function TipsSection() {
       </Row>
     </Container>
   );
-};
+}
 
 export default TipsSection;
