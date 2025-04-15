@@ -1,33 +1,31 @@
-.color-nav{
-    background-color:#dcc9ac ;
+.color-nav {
+  background-color: #dcc9ac;
+
 }
 
-.h-img { 
-  width: 90%;
-  height: 300px;
+.h-img {
+  width: 100%;
+  height: 50vh;
 }
-.color-card { 
-
-    background-color: #c8a77c !important;
-    color: #311b17 !important;
+.color-card {
+  background-color: #c8a77c !important;
+  color: #311b17 !important;
 }
 
 .tips-section {
-
   background-color: #311b17;
   color: #dcc9ac;
- 
 }
-footer{ 
+footer {
   background-color: #a8774a;
 }
-.dropdown-color{ 
- background-color: #ECE4D4 !important;
+.dropdown-color {
+  background-color: #ece4d4 !important;
 }
 
 .accordion-custom .accordion-item {
   background-color: #c8a77c; /* sfondo scuro */
-  color: #ECE4D4; /* testo chiaro */
+  color: #ece4d4; /* testo chiaro */
   border: none;
 }
 
@@ -38,11 +36,11 @@ footer{
 
 .accordion-custom .accordion-button:not(.collapsed) {
   background-color: #311b17;
-  color: #ECE4D4;
+  color: #ece4d4;
   box-shadow: none;
 }
 
 .accordion-custom .accordion-body {
   background-color: #311b17;
-  color: #ECE4D4;
+  color: #ece4d4;
 }
