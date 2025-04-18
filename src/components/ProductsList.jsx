@@ -1,6 +1,6 @@
 // src/components/ProductsList.jsx
 import { useEffect } from "react";
-import { Card, Col, Row, Spinner } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../redux/feauters/products/productsSlice";
@@ -11,11 +11,12 @@ function ProductsList({ featuredOnly = false }) {
 
   const { products, status, error } = useSelector((state) => state.products);
   // Recupera i filtri dallo slice: searchQuery e selectedCategory
-  const { searchQuery, selectedCategory } = useSelector((state) => state.filters);
+  const { searchQuery, selectedCategory } = useSelector(
+    (state) => state.filters
+  );
 
   useEffect(() => {
     if (status === "idle") {
-      // Assicurati che la chiamata API usi il parametro populate se serve per ottenere la relazione
       dispatch(getProducts());
     }
   }, [dispatch, status]);
@@ -27,6 +28,7 @@ function ProductsList({ featuredOnly = false }) {
       </div>
     );
   }
+  
   if (status === "failed") {
     return (
       <div className="text-center">
@@ -45,7 +47,7 @@ function ProductsList({ featuredOnly = false }) {
     );
   }
 
-  // Se c'è un testo di ricerca, filtriamo per nome (ignorando gli altri filtri)
+  // Se c'è un testo di ricerca, filtriamo per nome
   if (searchQuery && searchQuery.trim() !== "") {
     filteredProducts = filteredProducts.filter((product) =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -68,36 +70,64 @@ function ProductsList({ featuredOnly = false }) {
   };
 
   return (
-    <>
-      <Row xs={1} md={3} className="g-4">
+    <div className="container-fluid px-4 py-5" >
+      <Row xs={2} sm={3} md={4} className="g-4">
         {filteredProducts && filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <Col key={product.id}>
-              <Link to={`/prodotto/${product.id}`} className="text-decoration-none">
-                <Card className="color-card h-100">
-                  <Card.Img variant="top" src={product.cover} alt={product.name} className="w-50" />
-                  <Card.Body className="p-2 d-flex justify-content-between align-items-center">
-                    <Card.Title className="m-0 ">
-                      {product.name} {product.price}$
-                    </Card.Title>
+            <Col key={product.id} className="mb-5">
+              <div className="product-item text-center">
+                <Link
+                  to={`/prodotto/${product.id}`}
+                  className="text-decoration-none"
+                >
+                  <div className="product-image mb-3" style={{ height: "220px" }}>
+                    <img
+                      src={product.cover}
+                      alt={product.name}
+                      className="img-fluid"
+                      style={{ 
+                        maxHeight: "100%", 
+                        width: "auto", 
+                        maxWidth: "100%",
+                        margin: "0 auto",
+                        display: "block"
+                      }}
+                    />
+                  </div>
+                  <h6 className="product-name text-uppercase fw-bold mb-1" style={{ color: "#A8774A" }}>
+                    {product.name}
+
+                  </h6>
+                  <p className="product-details small mb-2" style={{ color: "#A8A8A8" }}>
+                  {product.info}
+                  </p>
+                  <div className="d-grid">
                     <button
-                      className="btn btn-secondary me-3"
+                      className="btn"
                       onClick={(e) => handleAddToCart(e, product)}
+                      style={{ 
+                        backgroundColor: "transparent", 
+                        color: "#D8A55A", 
+                        border: "1px solid #D8A55A",
+                        fontSize: "0.8rem",
+                        padding: "2px 15px",
+                        borderRadius: "0"
+                      }}
                     >
-                      <i className="bi bi-basket3 px-3"></i>
+                      €{product.price}
                     </button>
-                  </Card.Body>
-                </Card>
-              </Link>
+                  </div>
+                </Link>
+              </div>
             </Col>
           ))
         ) : (
           <div className="text-center col-12">
-            <h5>No products available.</h5>
+            <h5 style={{ color: "#D8A55A" }}>No products available.</h5>
           </div>
         )}
       </Row>
-    </>
+    </div>
   );
 }
 

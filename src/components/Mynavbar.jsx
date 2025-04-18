@@ -18,28 +18,28 @@ function MyNavbar() {
     <div className="w-100">
     {/* Navbar */}
     <Navbar
-      expand="xxl"
-      className="position-absolute top-0 start-0 w-100 z-3 rounded-0"
+      expand="md"
+      className=" w-100  rounded-0"
     
     >
       <Container>
-        <Navbar.Brand as={Link} to="/" className="text-white">Drinks</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className="text-dark"> SPIRITI NOBILI </Navbar.Brand>
         <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             className="border-0 d-flex align-items-center justify-content-center"
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.3)", width: "80px", height: "40px" }}
+           
           >
-            <span>menu</span>
-           <i className="bi  bi-cup-straw text-white"> </i>
+            <span> MENU</span>
+           <i className="bi  bi-cup-straw text-dark"> </i>
            
           </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-3 w-100 justify-content-center align-items-center gap-3">
-            <Nav.Link as={Link} to="/product" className="fw-semibold text-center text-white">Prodotti</Nav.Link>
-            <Nav.Link as={Link} to="/tips" className="fw-semibold text-center text-white">Tips</Nav.Link>
+            <Nav.Link as={Link} to="/product" className="fw-semibold text-center ">PRODOTTI</Nav.Link>
+            <Nav.Link as={Link} to="/tips" className="fw-semibold text-center ">TIPS</Nav.Link>
             <input
               type="text"
-              className="form-control w-50"
+              className="form-control w-25"
               placeholder="Cerca prodotto..."
               value={searchQuery}
               onChange={handleInputChange}
@@ -59,15 +59,7 @@ function MyNavbar() {
       </Container>
     </Navbar>
 
-    {/* Hero Image */}
-    <div className="position-relative" style={{ height: "70vh", overflow: "hidden" }}>
-      <img
-        src="https://i.postimg.cc/76dmWQy9/Immagine-Whats-App-2025-04-15-ore-12-20-18-37174640.jpg"
-        alt="hero"
-        className="w-100 h-100"
-        style={{ objectFit: "cover", objectPosition: "center 25%" }}
-      />
-    </div>
+  
 
   
   </div>

@@ -1,6 +1,10 @@
 body {
-    font-family:'IBM Plex Mono', serif !important;
+  
     background-color:#ede4d4 !important ;
     color: #311b17 !important;
+    font-family: "Chinchilla W00 Regular" !important;
   }
   
+  .imb-font {
+    font-family:'IBM Plex Mono', serif !important;
+  }

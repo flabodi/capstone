@@ -1,13 +1,13 @@
-// src/components/Categories.js
-import { useEffect } from "react";
-import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
+// src/components/CategoriesSlider.js
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../redux/feauters/categories/categoriesSlice";
 import { setSelectedCategory } from "../redux/feauters/categories/filtersSlice";
 
-function Categories() {
+function CategoriesSlider() {
   const dispatch = useDispatch();
-  const { categories, status, error } = useSelector((state) => state.categories);
+  const { categories = [], status, error } = useSelector((state) => state.categories);
+  const selected = useSelector((state) => state.filters.selectedCategory);
 
   useEffect(() => {
     if (status === "idle") {
@@ -15,58 +15,96 @@ function Categories() {
     }
   }, [dispatch, status]);
 
-  if (status === "loading") {
-    return (
-      <div className="d-flex justify-content-center my-4">
-        <Spinner animation="border" />
-      </div>
-    );
-  }
+  // Always call hooks in the same order
+  const positions = useMemo(() => {
+    if (categories.length <= 1) return ["0%"];
+    return categories.map((_, i) => `${(i / (categories.length - 1)) * 100}%`);
+  }, [categories]);
 
-  if (status === "failed") {
-    return (
-      <div className="text-center my-4">
-        <h3>Error: {error}</h3>
-      </div>
-    );
-  }
+  const selectedIndex = useMemo(() => {
+    const idx = categories.findIndex((c) => c.id === selected);
+    return idx >= 0 ? idx : 0;
+  }, [categories, selected]);
 
-  // Funzione per gestire il click su una categoria
-  const handleCategoryClick = (categoryId) => {
-    dispatch(setSelectedCategory(categoryId));
+  if (status === "loading") return null;
+  if (status === "failed") return <div>Error: {error}</div>;
+  if (categories.length === 0) return null;
+
+  const handleClick = (id) => {
+    dispatch(setSelectedCategory(id));
+  };
+
+  // Styles
+  const wrapperStyle = {
+    position: "relative",
+    height: "3rem",
+    margin: "80px",
+  };
+  const lineStyle = {
+    position: "absolute",
+    top: "50%",
+    left: 0,
+    right: 0,
+    height: "2px",
+    background: "#ffffff80",
+   
+  };
+  const circleStyle = (left) => ({
+    position: "absolute",
+    top: "50%",
+    left,
+    width: "8px",
+    height: "8px",
+    background: "#ffffff",
+    borderRadius: "50%",
+    transform: "translate(-50%, -50%)",
+  });
+  const labelStyle = (left, isActive) => ({
+    position: "absolute",
+    top: 0,
+    left,
+    transform: "translateX(-50%)",
+    cursor: "pointer",
+    color: isActive ? "#FFC107" : "#FFFFFF",
+    fontFamily: "monospace",
+    fontSize: "0.9rem",
+    letterSpacing: "1px",
+
+  });
+  const knobStyle = {
+    position: "absolute",
+    top: "50%",
+    left: positions[selectedIndex],
+    width: "6px",
+    height: "20px",
+    background: "#FFC107",
+    transform: "translate(-50%, -50%)",
   };
 
   return (
-    <Container className="my-4">
-      <h2 className="text-center my-4">Categorie</h2>
-      <Row className="g-4">
-     
+    <div style={wrapperStyle}>
+      {/* Track Line */}
+      <div style={lineStyle} />
 
-        {categories && categories.length > 0 ? (
-          categories.map((cat) => (
-            <Col md={4} key={cat.id}>
-              <Card
-                className="text-white rounded-4 overflow-hidden cursor-pointer"
-                onClick={() => handleCategoryClick(cat.id)}
-              >
-                {/* Utilizza l’immagine per la categoria se disponibile */}
-                <Card.Img src={cat.cover_categories} alt={cat.category} />
-                <Card.ImgOverlay className="d-flex flex-column justify-content-end bg-dark bg-opacity-25">
-                  <Card.Title className="fs-4 fw-bold">
-                    {cat.category}
-                  </Card.Title>
-                </Card.ImgOverlay>
-              </Card>
-            </Col>
-          ))
-        ) : (
-          <Col className="text-center">
-            <h5>No categories available.</h5>
-          </Col>
-        )}
-      </Row>
-    </Container>
+      {/* End circles */}
+      <div style={circleStyle("0%" )} />
+      <div style={circleStyle("100%")} />
+
+      {/* Category labels */}
+      {categories.map((cat, idx) => (
+        <span 
+          key={cat.id}
+          style={labelStyle(positions[idx], selected === cat.id)}
+          onClick={() => handleClick(cat.id)}
+        >
+          {cat.category.toUpperCase()}
+        </span>
+      ))}
+
+      {/* Knob Indicator */}
+      <div style={knobStyle} />
+    </div>
   );
 }
 
-export default Categories;
+export default CategoriesSlider;

@@ -44,14 +44,14 @@ function TipsSection() {
   };
 
   return (
-    <Container className="my-5">
+    <Container fluid className="my-5 p-3 bg-white">
       <Row className="g-4">
         {tipsStories.map((tip) => (
           <Col key={tip.id} md={6}>
-            <Card className="h-100 shadow-sm">
-              <Card.Body>
-                <Card.Title>{tip.title}</Card.Title>
-                <Card.Text
+            <div className="h-75  w-75">
+           
+                <h3>{tip.title}</h3>
+                <p
                   style={{
                     display: "-webkit-box",
                     WebkitLineClamp: expandedTips[tip.id] ? "unset" : 6,
@@ -61,7 +61,7 @@ function TipsSection() {
                   }}
                 >
                   {tip.content}
-                </Card.Text>
+                </p>
                 <Button
                   variant="link"
                   className="p-0"
@@ -69,8 +69,8 @@ function TipsSection() {
                 >
                   {expandedTips[tip.id] ? "Mostra meno" : "Leggi di più"}
                 </Button>
-              </Card.Body>
-            </Card>
+            
+            </div>
           </Col>
         ))}
       </Row>
