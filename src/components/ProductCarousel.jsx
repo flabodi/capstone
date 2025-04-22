@@ -11,8 +11,8 @@ function ProductCarousel({ featuredOnly = false, maxProducts = 5 }) {
 
   // Layout constants
   const VISIBLE_COUNT = 5;
-  const ITEM_WIDTH = 150;
-  const ITEM_HEIGHT = 300;
+  const ITEM_WIDTH = 260;
+  const ITEM_HEIGHT = 600;
   const GAP = 16;
   const VIEWPORT_WIDTH = VISIBLE_COUNT * ITEM_WIDTH + (VISIBLE_COUNT - 1) * GAP;
   const CENTER_INDEX = Math.floor(VISIBLE_COUNT / 2);
@@ -131,20 +131,38 @@ function ProductCarousel({ featuredOnly = false, maxProducts = 5 }) {
           →
         </button>
       </div>
+      <div className="row mx-5">
+        {/* Colonna 1: titolo e lista dei più venduti */}
+        <div className="col-md-4">
+          <h3>I PIU VENDUTI :</h3>
+          {/* Esempio di lista statica; sostituisci con la tua mappatura */}
+          
+        </div>
 
-      {active && (
-        <div className="info">
-          <h3>{active.name}</h3>
-          <p>Prezzo: €{active.price}</p>
-          {Array.isArray(active.description) && (
-            <p>
-              {active.description
-                .map((b) => b.children.map((c) => c.text).join(""))
-                .join("\n")}
-            </p>
+        {/* Colonna 2: nome e prezzo del prodotto attivo */}
+        <div className="col-md-4">
+          {active && (
+            <>
+              <h1>{active.name}</h1>
+              <h3>{active.info}</h3>
+            </>
           )}
         </div>
-      )}
+
+        {/* Colonna 3: descrizione */}
+        <div className="col-md-4 imb-font">
+          {active && Array.isArray(active.description) && (
+            <div>
+              {active.description.map((block, i) => (
+                <p key={i}>
+                  {block.children.map(child => child.text).join('')}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      
     </div>
   );
 }

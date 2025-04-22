@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../redux/feauters/products/productsSlice";
 import { Col, Container, Row, Accordion, Spinner } from "react-bootstrap";
 import { addToCart } from "../redux/feauters/cart/cartSlice";
-
-
+import icon from "../assets/Livello_1.svg";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -69,85 +68,70 @@ function ProductDetail() {
     <>
       <Container fluid>
         <Row className="my-4">
-          <Col md={7}>
-            {/* Mostra l'immagine principale 4 volte come nel tuo layout */}
-            <img
-              className="w-50"
-              src={currentProduct.cover}
-              alt={currentProduct.name}
-            />
-            <img
-              className="w-50"
-              src={currentProduct.cover}
-              alt={currentProduct.name}
-            />
-            <img
-              className="w-50"
-              src={currentProduct.cover}
-              alt={currentProduct.name}
-            />
-            <img
-              className="w-50"
-              src={currentProduct.cover}
-              alt={currentProduct.name}
-            />
-          </Col>
-          <Col md={5}>
-            <h1>{currentProduct.name}</h1>
-            <ul>
-              <li>Price: ${currentProduct.price}</li>
-              <li>Category: Cocktail</li>
-              <li>Glass: Cocktail glass</li>
-              {/* Se hai altri dati per questi campi, puoi aggiungerli qui */}
-            </ul>
+          <Col md={7} className="ps-5">
+            <h1>
+              {currentProduct.name} - {currentProduct.price}$
+            </h1>
+            <h3>{currentProduct.info}</h3>
+            <p className="imb-font">{getDescriptionText()}</p>
 
-            <button className="btn btn-primary" onClick={handleAddToCart}>
+            <button
+              className="btn imb-font text-primary"
+              onClick={handleAddToCart}
+            >
               Add to Cart
             </button>
-          </Col>
-        </Row>
-        <hr />
-        <Row>
-          <Col md={6}>
-            <Accordion defaultActiveKey="0" className="my-4 accordion-custom">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>Ingredients</Accordion.Header>
-                <Accordion.Body>{currentProduct.ingedients}</Accordion.Body>
-              </Accordion.Item>
+            <div className="miscelazione-container mt-4">
+              <div className="miscelazione-table">
+                <div className="miscelazione-header">
+                  <h2>MISCELAZIONE ARTIGIANALE</h2>
+                </div>
 
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>Descrizione</Accordion.Header>
-                <Accordion.Body>{getDescriptionText()}</Accordion.Body>
-              </Accordion.Item>
+                <div className="miscelazione-content">
+                  <div className="miscelazione-left">
+                    <div className="temperatura-section">
+                      <p className="label">Temperatura ideale:</p>
+                      <p className="value">4-6°C</p>
+                    </div>
 
-              <Accordion.Item eventKey="2">
-                <Accordion.Header>Fallo a casa</Accordion.Header>
-                <Accordion.Body>
-                  {currentProduct.tips ||
-                    "I nostri drink arrivano pronti da essere bevuti. Il consiglio è quello di non usare ghiaccio e di berlo molto freddo; mettilo in congelatore, non ghiaccerà."}
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </Col>
-          <Col md={6}>
-            <h4>Pallet aromatico</h4>
-            <div className="text-center">
-              <img
-                className="w-25"
-                src="https://plus.unsplash.com/premium_vector-1731582097922-7de0df6c07ef?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGdyYWZpY298ZW58MHx8MHx8fDA%3D"
-                alt="Pallet aromatico"
-              />
+                    <div className="bicchiere-section border-top border-black ">
+                      <p className="label mt-3">Bicchiere:</p>
+                      <p className="value">COPPA MARTINI</p>
+                    </div>
+                  </div>
+
+                  <div className="miscelazione-right">
+                    <p className="ingredienti">
+                      Acqua purificata, rum bianco (25%) distillato da melassa
+                      di canna da zucchero, succo di lime concentrato (7%),
+                      zucchero di canna, aromi naturali (limone e lime, cola,
+                      radice di zenzero), estratto di lime naturale, conservante
+                      (sorbato di potassio), stabilizzante (gomma naturale), una
+                      goccia di arroganza tropicale.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="miscelazione-footer">
+                  <p>
+                    APERITIVO AL TRAMONTO / SUNDAY CHILL • OSTRICHE, CEVICHE,
+                    POPCORN SALATI
+                  </p>
+                </div>
+              </div>
             </div>
-            <ul>
-              <li>Spedizione gratuita per ordini superiori a 50€</li>
-              <li>Drink artigianali pronti da gustare, ovunque tu sia</li>
-              <li>
-                Miscelati con ingredienti premium da bartender professionisti
-              </li>
-            </ul>
+          </Col>
+          <Col md={5} className="text-center">
+            {/* Mostra l'immagine principale 4 volte come nel tuo layout */}
+
+            <div className="image-container">
+              <img src={currentProduct.cover} alt={currentProduct.name} />
+              <img src={icon} alt="" className="icon" />
+            </div>
           </Col>
         </Row>
       </Container>
+      <img className="w-100" src={currentProduct.gallery_product1} alt="" />
     </>
   );
 }

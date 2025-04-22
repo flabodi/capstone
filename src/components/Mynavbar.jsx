@@ -26,7 +26,7 @@ function MyNavbar() {
         <Navbar.Brand as={Link} to="/" className="text-dark"> SPIRITI NOBILI </Navbar.Brand>
         <Navbar.Toggle
             aria-controls="basic-navbar-nav"
-            className="border-0 d-flex align-items-center justify-content-center"
+            className="border-0 d-flex align-items-center justify-content-center d-block d-lg-none"
            
           >
             <span> MENU</span>
@@ -39,13 +39,13 @@ function MyNavbar() {
             <Nav.Link as={Link} to="/tips" className="fw-semibold text-center ">TIPS</Nav.Link>
             <input
               type="text"
-              className="form-control w-25"
-              placeholder="Cerca prodotto..."
+              className="form-control w-25 rounded-5 h-25"
+              placeholder="CERCA PRODOTTO..."
               value={searchQuery}
               onChange={handleInputChange}
             />
             <Link to="/cart" className="text-decoration-none">
-              <button className="btn btn-secondary position-relative">
+              <button className="btn  position-relative">
                 <i className="bi bi-basket3 px-3"></i>
                 {totalItems > 0 && (
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
