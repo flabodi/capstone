@@ -37,13 +37,17 @@ function MyNavbar() {
           <Nav className="ms-3 w-100 justify-content-center align-items-center gap-3">
             <Nav.Link as={Link} to="/product" className="fw-semibold text-center ">PRODOTTI</Nav.Link>
             <Nav.Link as={Link} to="/tips" className="fw-semibold text-center ">TIPS</Nav.Link>
-            <input
-              type="text"
-              className="form-control w-25 rounded-5 h-25"
-              placeholder="CERCA PRODOTTO..."
-              value={searchQuery}
-              onChange={handleInputChange}
-            />
+            <div class="position-relative w-25">
+  <input
+    type="text"
+    class="form-control rounded-5 ps-5 h-25"
+    placeholder="CERCA PRODOTTO..."
+    value={searchQuery}
+    onChange={handleInputChange}
+  />
+  <i className="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+</div>
+
             <Link to="/cart" className="text-decoration-none">
               <button className="btn  position-relative">
                 <i className="bi bi-basket3 px-3"></i>

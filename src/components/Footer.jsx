@@ -6,7 +6,7 @@ return (
       <Container>
         <Row>
           <Col md={4}>
-            <h5>Retex</h5>
+            <h5>Spiriti Nobili</h5>
             <p>
               Cocktail pronti in bottiglia o lattina, nati per portare l’arte della miscelazione ovunque tu sia.
             </p>
@@ -21,9 +21,9 @@ return (
           </Col>
           <Col md={4}>
             <h5>Contatti</h5>
-            <p>Email: info@retexdrinks.com</p>
+            <p>Email: info@SpiritiNobili.com</p>
             <p>Telefono: +39 123 456 7890</p>
-            <p>Instagram: @retexdrinks</p>
+            <p>Instagram: @SpiritiNobili</p>
           </Col>
         </Row>
       </Container>

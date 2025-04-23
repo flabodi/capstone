@@ -115,11 +115,11 @@ function ProductCarousel({ featuredOnly = false, maxProducts = 5 }) {
       </div>
 
       {/* Navigazione con frecce sotto il carosello */}
-      <div className="navigation">
+      <div className="navigation d-flex justify-content-between align-items-center w-100 px-3 ">
         <button
           onClick={handlePrev}
           disabled={disablePrev}
-          className={`navArrow ${disablePrev ? "arrowDisabled" : ""}`}
+          className={`navArrow  ${disablePrev ? "arrowDisabled" : ""}`}
         >
           ←
         </button>
@@ -134,7 +134,7 @@ function ProductCarousel({ featuredOnly = false, maxProducts = 5 }) {
       <div className="row mx-5">
         {/* Colonna 1: titolo e lista dei più venduti */}
         <div className="col-md-4">
-          <h3>I PIU VENDUTI :</h3>
+         <u> <h3> I PIU VENDUTI :</h3></u>
           {/* Esempio di lista statica; sostituisci con la tua mappatura */}
           
         </div>

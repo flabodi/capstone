@@ -1,6 +1,7 @@
 import "./App.css";
 import "./index.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import MyNavbar from "./components/Mynavbar";
 import Home from "./components/Home";
 import TipsSection from "./components/TipsSection";
@@ -11,19 +12,16 @@ import Products from "./components/Products";
 import ProductPage from "./components/ProductPage";
 import ThankYouPage from "./components/ThankYouPage";
 
-function App() {
+// Componente wrapper per AnimatePresence
+function AnimatedRoutes() {
+  const location = useLocation();
+  
   return (
-    <Router>
-      <MyNavbar />
-
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
         <Route
           path="/"
-          element={
-            <>
-              <Home />
-            </>
-          }
+          element={<Home />}
         />
         <Route path="/product" element={<Products />} />
         <Route path="/tips" element={<TipsPage />} />
@@ -31,7 +29,15 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/thank-you" element={<ThankYouPage />} />
       </Routes>
+    </AnimatePresence>
+  );
+}
 
+function App() {
+  return (
+    <Router>
+      <MyNavbar />
+      <AnimatedRoutes />
       <Footer />
     </Router>
   );

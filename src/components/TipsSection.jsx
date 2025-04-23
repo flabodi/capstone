@@ -44,14 +44,14 @@ function TipsSection() {
   };
 
   return (
-    <Container fluid className="my-5 p-3 bg-white">
+    <Container fluid className="my-5 p-3 ">
       <Row className="g-4">
         {tipsStories.map((tip) => (
           <Col key={tip.id} md={6}>
             <div className="h-75  w-75">
            
                 <h3>{tip.title}</h3>
-                <p
+                <p className="imb-font"
                   style={{
                     display: "-webkit-box",
                     WebkitLineClamp: expandedTips[tip.id] ? "unset" : 6,
@@ -64,7 +64,7 @@ function TipsSection() {
                 </p>
                 <Button
                   variant="link"
-                  className="p-0"
+                  className="p-0 imb-font text-decoration-none"
                   onClick={() => toggleExpand(tip.id)}
                 >
                   {expandedTips[tip.id] ? "Mostra meno" : "Leggi di più"}

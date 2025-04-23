@@ -30,7 +30,7 @@ function CartPage() {
   };
 
   return (
-    <Container className="my-5">
+    <Container className="my-5 imb-font">
       <h2 className="mb-4">Il tuo carrello</h2>
       
       {items.length === 0 ? (
