@@ -16,14 +16,15 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...action.payload, quantity: 1 });
       }
-
-      state.total += state.items.reduce(
+      
+      state.total = state.items.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0
       );
     },
     removeFromCart: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      // L'ID viene passato direttamente come action.payload, non come action.payload.id
+      state.items = state.items.filter((item) => item.id !== action.payload);
       state.total = state.items.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0
@@ -32,7 +33,7 @@ const cartSlice = createSlice({
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       const itemIndex = state.items.findIndex((item) => item.id === id);
-
+      
       if (itemIndex >= 0) {
         state.items[itemIndex].quantity = quantity;
       }

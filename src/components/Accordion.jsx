@@ -26,7 +26,7 @@ export default function Accordion() {
   };
 
   return (
-    <div className=" accordeon-container d-flex flex-column justify-content-center ">
+    <div className=" accordeon-container d-flex flex-column justify-content-center  ">
       <div>
         {accordionItems.map((item, index) => (
           <div key={index}>

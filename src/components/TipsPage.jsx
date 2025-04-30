@@ -3,7 +3,7 @@ import TipsSection from "./TipsSection";
 function TipsPage() {
   return (
     <>
-      <h1>tips </h1>
+      <h1 className="ms-3">  TIPS </h1>
       <TipsSection />
     </>
   );

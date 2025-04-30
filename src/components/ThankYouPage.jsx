@@ -12,7 +12,8 @@ function ThankYouPage() {
           <Card className="color-card p-5">
             <i className="bi bi-check-circle-fill text-success" style={{ fontSize: "4rem" }}></i>
             <Card.Body>
-              <Card.Title as="h1" className="mb-4">Grazie per il tuo ordine!</Card.Title>
+              <Card.Title as="h1" className="mb-4">GRAZIE PER IL TUO ORDINE</Card.Title>
+              <div className="imb-font">
               <Card.Text className="mb-4">
                 Il tuo ordine #{orderNumber} è stato confermato. Ti abbiamo inviato un'email con i dettagli dell'ordine.
               </Card.Text>
@@ -24,7 +25,7 @@ function ThankYouPage() {
               </Button>
               <Button variant="outline-primary" onClick={() => navigate("/product")}>
                 Continua lo shopping
-              </Button>
+              </Button></div>
             </Card.Body>
           </Card>
         </Col>

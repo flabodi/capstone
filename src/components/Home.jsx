@@ -12,13 +12,13 @@ function Home() {
   return (
     <>
       <Container fluid>
-        <MotionWrapper className="mt-5" animation="fadeIn">
+        <MotionWrapper className="mt-5" animation="fadeIn" >
           <ProductCarousel featuredOnly={true} maxProducts={5} />
         </MotionWrapper>
       </Container>
       <Row className="home-row">
         <Col md={6} className="mt-5 pt-5">
-          <MotionWrapper className="mx-5 ps-5" animation="fadeInUp">
+          <MotionWrapper className="mx-5 ps-5" animation="fadeInUp" delay={0.4}>
             <h2>
               ABBIAMO PRESO LE <br /> RICETTE DEI GRANDI <br />
               CLASSICI E LE ABBIAMO <br /> VESTITE A FESTA.
@@ -34,14 +34,14 @@ function Home() {
             </p>
           </MotionWrapper>
           
-          <MotionWrapper className="ms-5 ps-5" animation="fadeInUp" delay={0.3}>
+          <MotionWrapper className="ms-5 mb-sm-4 ps-5" animation="fadeInUp" delay={0.3}>
             <a className="text-decoration-none" href="">
               CHI SIAMO
             </a>
           </MotionWrapper>
         </Col>
-        <Col md={6}>
-          <MotionWrapper className="home-img" animation="fadeIn" delay={0.2}>
+        <Col xs={12} md={6} className="p-0  order-md-2"  >
+          <MotionWrapper className="home-img " animation="fadeIn" delay={0.2}>
             {/* La div dell'immagine è ora all'interno di MotionWrapper */}
           </MotionWrapper>
         </Col>

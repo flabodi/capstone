@@ -46,14 +46,13 @@ footer {
 
 .home-img {
   width: 100%;
-  height: 100vh;
+  height: auto;
+  aspect-ratio: 1/1;
+  background: url(https://i.postimg.cc/VsxNtn2Q/mycelio-studio-75688-Shot-of-a-bartender-preparing-a-daiquiri-i-4ee85dd2-68a5-4412-b8af-3b6bd6bb74cf.png) no-repeat center center;
+  background-size: cover;
   flex-shrink: 0;
-  
-  background: url(https://i.postimg.cc/VsxNtn2Q/mycelio-studio-75688-Shot-of-a-bartender-preparing-a-daiquiri-i-4ee85dd2-68a5-4412-b8af-3b6bd6bb74cf.png)
-    lightgray  no-repeat;
-  margin-right: 0;
-  margin-left: 60px;
 }
+
 .home-row {
 
   height: 800px;
@@ -68,6 +67,8 @@ footer {
   background-color: #ffae2d;
   height: 400px;
 }
+
+
 
 /* abilita la transizione sulla rotazione */
 .chevron {
@@ -270,3 +271,43 @@ height: 160px;
 }
 
 
+
+@media (max-width: 768px) {
+  .home-img {
+    height: 100%;
+
+  }
+  .accordeon-container{
+    margin-top: 230px;
+  }
+  .bot1-h-img {
+    width: 100%;
+    height: auto;
+  
+  }
+  
+  .space-recipe {
+    width: 100% ;
+    height: auto ;
+    margin-bottom: 1rem;
+  }
+  
+  /* (se vuoi ripristinare la width fissa su desktop) */
+  .recipe-img-wrapper {
+    width: 100%;
+   
+    border-radius: 0.5rem;
+  }
+  .recipe-image {
+    display: block;
+    width: 100% ;
+    height: auto ;
+    object-fit: cover;
+  }
+  
+  .recipe-title > h2 {
+    
+   margin: 13px 0 20px  230px;
+  }
+  
+}

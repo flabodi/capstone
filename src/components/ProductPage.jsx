@@ -68,7 +68,11 @@ function ProductDetail() {
     <>
       <Container fluid>
         <Row className="my-4">
-          <Col md={7} className="ps-5">
+          <Col
+            sm={{ order: 2, span: 12 }}
+            md={{ order: 1, span: 5 }}
+            className="ps-5"
+          >
             <h1>
               {currentProduct.name} - {currentProduct.price}$
             </h1>
@@ -121,9 +125,8 @@ function ProductDetail() {
               </div>
             </div>
           </Col>
-          <Col md={5} className="text-center">
-            {/* Mostra l'immagine principale 4 volte come nel tuo layout */}
-
+          <Col  sm={{ order: 1, span: 12 }}
+      md={{ order: 2, span: 7 }} className="text-center">
             <div className="image-container">
               <img src={currentProduct.cover} alt={currentProduct.name} />
               <img src={icon} alt="" className="icon" />

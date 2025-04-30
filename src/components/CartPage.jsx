@@ -71,7 +71,7 @@ function CartPage() {
                         </td>
                         <td>${item.price}</td>
                         <td>
-                          <div className="d-flex align-items-center">
+                          <div className="d-flex align-items-center ">
                             <Button
                               variant="outline-secondary"
                               size="sm"
@@ -106,7 +106,7 @@ function CartPage() {
               </Card.Body>
             </Card>
             
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between mb-4">
               <Button variant="outline-secondary" onClick={() => navigate("/product")}>
                 Continua lo shopping
               </Button>

@@ -18,12 +18,12 @@ export default function RecipeSection() {
   const primiDue = products.slice(0, 2);
 
   return (
-    <Container fluid className="py-5 recipe-section">
-      <div className="w-50 mb-3 recipe-title">
+    <Container fluid className="py-5   recipe-section">
+      <div className="w-md-50 mb-3 recipe-title text-sm-center">
         <h1>
           NOBILI RICETTE <br /> IN PILLOLE
         </h1>
-        <h2></h2>
+        <h2 >  </h2>
         <h3>
           (SE VUOI MISCELARE A CASA, MA <br /> PROVA ANCHE LA NOSTRA PERCHè è{" "}
           <br /> BUONISSSIMO E NON HAI SBATTI)
@@ -35,13 +35,13 @@ export default function RecipeSection() {
           const ingredients = p.ingedients.split(",").map((i) => i.trim());
 
           return (
-            <Col md={6} key={p.id} className="mb-4 imb-font">
-              <h4>{p.name}</h4>
+            <Col xs={12} md={6} key={p.id} className="mb-4 imb-font">
+              <h4 className="mt-sm-5 title-recipe text-sm-center">{p.name}</h4>
               {p.story && (
                 <div className="space-recipe">
                   <p>{p.story}</p>
                 </div>
-              )}{" "}
+              )}
               <h6>INGREDIENTI:</h6>
               <ul className="recipe-list">
                 {ingredients.map((ing, i) => (
@@ -52,7 +52,7 @@ export default function RecipeSection() {
                 <img
                   src={p.gallery_product1}
                   alt={`${p.name} gallery`}
-                  className="img-fluid mt-2 h-50 w-100  mb-5"
+                  className="img-fluid mt-2 h-50 w-100 recipe-image  mb-5"
                 />
               )}
             </Col>

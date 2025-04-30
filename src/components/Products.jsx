@@ -6,7 +6,7 @@ function Products() {
   return (
     <>
       <Container fluid className=" px-0 ">
-        <div className="w-50  ps-3">
+        <div className="w-md-50  ps-3 text-sm-center mx-sm-5">
           <h1>I NOSTRI SPIRITI NOBILI</h1>
           <p className="imb-font">
             Immagina di preparare un Martini o un Daiquiri con un rum o gin di
