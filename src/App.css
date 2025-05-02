@@ -55,7 +55,7 @@ footer {
 
 .home-row {
 
-  height: 800px;
+  max-height: 800px;
   flex-shrink: 0;
   background: #fae5c2;
   border: #311b17 1px solid;
@@ -192,10 +192,18 @@ footer {
  width: 140px;
   height: auto;
 }
+.tips-style {
+background-color: #c8a77c;
+
+}
 
 .recipe-section {
   background-color: #1C0D00;
   color: #FCF6E8;
+}
+.recipe-image{
+ 
+  padding-bottom: 30px;
 }
 
 .recipe-title {

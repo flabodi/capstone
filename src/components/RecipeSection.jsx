@@ -19,16 +19,17 @@ export default function RecipeSection() {
 
   return (
     <Container fluid className="py-5   recipe-section">
-      <div className="w-md-50 mb-3 recipe-title text-sm-center">
-        <h1>
-          NOBILI RICETTE <br /> IN PILLOLE
-        </h1>
-        <h2 >  </h2>
-        <h3>
-          (SE VUOI MISCELARE A CASA, MA <br /> PROVA ANCHE LA NOSTRA PERCHè è{" "}
-          <br /> BUONISSSIMO E NON HAI SBATTI)
-        </h3>
-      </div>
+      <div className="w-100 w-md-50 mb-3 recipe-title text-center text-md-start">
+  <h1>
+    NOBILI RICETTE <br /> IN PILLOLE
+  </h1>
+  <h2></h2>
+  <h3>
+    (SE VUOI MISCELARE A CASA, MA <br /> PROVA ANCHE LA NOSTRA PERCHè è{" "}
+    <br /> BUONISSSIMO E NON HAI SBATTI)
+  </h3>
+</div>
+
       <Row>
         {primiDue.map((p) => {
           // split degli ingredienti
@@ -36,7 +37,7 @@ export default function RecipeSection() {
 
           return (
             <Col xs={12} md={6} key={p.id} className="mb-4 imb-font">
-              <h4 className="mt-sm-5 title-recipe text-sm-center">{p.name}</h4>
+              <h4 className="mt-sm-5 title-recipe text-sm-center text-xl-start">{p.name}</h4>
               {p.story && (
                 <div className="space-recipe">
                   <p>{p.story}</p>

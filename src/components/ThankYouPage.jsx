@@ -20,7 +20,7 @@ function ThankYouPage() {
               <Card.Text className="mb-4">
                 I tuoi cocktail artigianali saranno presto in viaggio. Per qualsiasi domanda, non esitare a contattarci.
               </Card.Text>
-              <Button variant="primary" onClick={() => navigate("/")} className="me-3">
+              <Button variant="primary" onClick={() => navigate("/")} className="me-3 mb-2">
                 Torna alla home
               </Button>
               <Button variant="outline-primary" onClick={() => navigate("/product")}>

@@ -12,7 +12,7 @@ function Home() {
   return (
     <>
       <Container fluid>
-        <MotionWrapper className="mt-5" animation="fadeIn" >
+        <MotionWrapper className="mt-5" animation="fadeIn"  >
           <ProductCarousel featuredOnly={true} maxProducts={5} />
         </MotionWrapper>
       </Container>
@@ -76,7 +76,9 @@ function Home() {
       
       <Container fluid className="my-5">
         <MotionWrapper animation="fadeInUp">
-          <TipsSection />
+          
+              <TipsSection />
+            
         </MotionWrapper>
       </Container>
       

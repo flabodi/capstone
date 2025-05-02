@@ -1,42 +1,57 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+// eslint-disable-next-line no-unused-vars
+import { useAnimation } from "framer-motion";
 
-export const MotionWrapper = ({ children, animation = "fadeInUp", delay = 0, ...props }) => {
-  const animations = {
-    fadeInUp: {
-      initial: { opacity: 0, y: 60 },
-      whileInView: { opacity: 1, y: 0 },
-      viewport: { once: false, amount: 0.3 },
-      transition: { duration: 0.6, ease: "easeOut", delay }
-    },
-    fadeIn: {
-      initial: { opacity: 0 },
-      whileInView: { opacity: 1 },
-      viewport: { once: false, amount: 0.3 },
-      transition: { duration: 0.8, delay }
-    },
-    slideIn: {
-      initial: { opacity: 0, x: -60 },
-      whileInView: { opacity: 1, x: 0 },
-      viewport: { once: false, amount: 0.3 },
-      transition: { duration: 0.6, ease: "easeOut", delay }
-    },
-    slideRight: {
-      initial: { opacity: 0, x: 60 },
-      whileInView: { opacity: 1, x: 0 },
-      viewport: { once: false, amount: 0.3 },
-      transition: { duration: 0.6, ease: "easeOut", delay }
-    },
-    zoomIn: {
-      initial: { opacity: 0, scale: 0.9 },
-      whileInView: { opacity: 1, scale: 1 },
-      viewport: { once: false, amount: 0.3 },
-      transition: { duration: 0.6, ease: "easeOut", delay }
-    }
-  };
+const variants = {
+  fadeInUp: {
+    hidden: { opacity: 0, y: 60 },
+    visible: { opacity: 1, y: 0 }
+  },
+  fadeIn: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  },
+  slideIn: {
+    hidden: { opacity: 0, x: -60 },
+    visible: { opacity: 1, x: 0 }
+  },
+  slideRight: {
+    hidden: { opacity: 0, x: 60 },
+    visible: { opacity: 1, x: 0 }
+  },
+  zoomIn: {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1 }
+  }
+};
+
+/**
+ * MotionWrapper supporta due modalità di animazione:
+ * - whileInView (default): anima quando entra in viewport
+ * - useAnimate: anima quando 'controls' viene avviato
+ */
+export const MotionWrapper = ({
+  children,
+  animation = "fadeInUp",
+  delay = 0,
+  useAnimate = false,
+  controls,
+  ...props
+}) => {
+  const transition = { duration: 0.6, ease: "easeOut", delay };
+  const variant = variants[animation] || variants.fadeInUp;
 
   return (
-    <motion.div {...animations[animation]} {...props}>
+    <motion.div
+      variants={variant}
+      initial={useAnimate ? "hidden" : "hidden"}
+      animate={useAnimate ? controls : undefined}
+      whileInView={!useAnimate ? "visible" : undefined}
+      viewport={!useAnimate ? { once: false, amount: 0.3 } : undefined}
+      transition={transition}
+      {...props}
+    >
       {children}
     </motion.div>
   );

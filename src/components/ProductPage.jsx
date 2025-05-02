@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../redux/feauters/products/productsSlice";
 import { Col, Container, Row, Accordion, Spinner } from "react-bootstrap";
 import { addToCart } from "../redux/feauters/cart/cartSlice";
+import { MotionWrapper } from "./MotionWrapper";
 import icon from "../assets/Livello_1.svg";
 
 function ProductDetail() {
@@ -60,81 +61,107 @@ function ProductDetail() {
       )
       .join("\n");
   };
+
   const handleAddToCart = () => {
     dispatch(addToCart(currentProduct));
     alert(`${currentProduct.name} aggiunto al carrello!`);
   };
+
   return (
     <>
-      <Container fluid>
-        <Row className="my-4">
-          <Col
-            sm={{ order: 2, span: 12 }}
-            md={{ order: 1, span: 5 }}
-            className="ps-5"
-          >
-            <h1>
-              {currentProduct.name} - {currentProduct.price}$
-            </h1>
-            <h3>{currentProduct.info}</h3>
-            <p className="imb-font">{getDescriptionText()}</p>
-
-            <button
-              className="btn imb-font text-primary"
-              onClick={handleAddToCart}
+      {/* Animazione della sezione prodotto */}
+      <MotionWrapper animation="fadeInUp" delay={0.1}>
+        <Container fluid>
+          <Row className="my-4">
+            {/* Colonna testi - a sinistra su md+ e sotto su sm */}
+            <Col
+              xs={12}
+              sm={12}
+              md={5}
+              className="ps-md-5 order-2 order-md-1"
             >
-              Add to Cart
-            </button>
-            <div className="miscelazione-container mt-4">
-              <div className="miscelazione-table">
-                <div className="miscelazione-header">
-                  <h2>MISCELAZIONE ARTIGIANALE</h2>
-                </div>
+              <MotionWrapper animation="fadeInUp" delay={0.2}>
+                <h1>
+                  {currentProduct.name} - {currentProduct.price}$
+                </h1>
+                <h3>{currentProduct.info}</h3>
+                <p className="imb-font">{getDescriptionText()}</p>
 
-                <div className="miscelazione-content">
-                  <div className="miscelazione-left">
-                    <div className="temperatura-section">
-                      <p className="label">Temperatura ideale:</p>
-                      <p className="value">4-6°C</p>
+                <button
+                  className="btn imb-font text-primary"
+                  onClick={handleAddToCart}
+                >
+                  Add to Cart
+                </button>
+
+                <div className="miscelazione-container mt-4">
+                  <div className="miscelazione-table">
+                    <div className="miscelazione-header">
+                      <h2>MISCELAZIONE ARTIGIANALE</h2>
                     </div>
 
-                    <div className="bicchiere-section border-top border-black ">
-                      <p className="label mt-3">Bicchiere:</p>
-                      <p className="value">COPPA MARTINI</p>
+                    <div className="miscelazione-content">
+                      <div className="miscelazione-left">
+                        <div className="temperatura-section">
+                          <p className="label">Temperatura ideale:</p>
+                          <p className="value">4-6°C</p>
+                        </div>
+
+                        <div className="bicchiere-section border-top border-black ">
+                          <p className="label mt-3">Bicchiere:</p>
+                          <p className="value">COPPA MARTINI</p>
+                        </div>
+                      </div>
+
+                      <div className="miscelazione-right">
+                        <p className="ingredienti">
+                          Acqua purificata, rum bianco (25%) distillato da melassa
+                          di canna da zucchero, succo di lime concentrato (7%),
+                          zucchero di canna, aromi naturali (limone e lime, cola,
+                          radice di zenzero), estratto di lime naturale, conservante
+                          (sorbato di potassio), stabilizzante (gomma naturale), una
+                          goccia di arroganza tropicale.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="miscelazione-footer">
+                      <p>
+                        APERITIVO AL TRAMONTO / SUNDAY CHILL • OSTRICHE, CEVICHE,
+                        POPCORN SALATI
+                      </p>
                     </div>
                   </div>
-
-                  <div className="miscelazione-right">
-                    <p className="ingredienti">
-                      Acqua purificata, rum bianco (25%) distillato da melassa
-                      di canna da zucchero, succo di lime concentrato (7%),
-                      zucchero di canna, aromi naturali (limone e lime, cola,
-                      radice di zenzero), estratto di lime naturale, conservante
-                      (sorbato di potassio), stabilizzante (gomma naturale), una
-                      goccia di arroganza tropicale.
-                    </p>
-                  </div>
                 </div>
+              </MotionWrapper>
+            </Col>
 
-                <div className="miscelazione-footer">
-                  <p>
-                    APERITIVO AL TRAMONTO / SUNDAY CHILL • OSTRICHE, CEVICHE,
-                    POPCORN SALATI
-                  </p>
+            {/* Colonna immagini - a destra su md+ e sopra su sm */}
+            <Col
+              xs={12}
+              sm={12}
+              md={7}
+              className="text-center order-1 order-md-2"
+            >
+              <MotionWrapper animation="slideIn" delay={0.3}>
+                <div className="image-container">
+                  <img src={currentProduct.cover} alt={currentProduct.name} />
+                  <img src={icon} alt="" className="icon" />
                 </div>
-              </div>
-            </div>
-          </Col>
-          <Col  sm={{ order: 1, span: 12 }}
-      md={{ order: 2, span: 7 }} className="text-center">
-            <div className="image-container">
-              <img src={currentProduct.cover} alt={currentProduct.name} />
-              <img src={icon} alt="" className="icon" />
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <img className="w-100" src={currentProduct.gallery_product1} alt="" />
+              </MotionWrapper>
+            </Col>
+          </Row>
+        </Container>
+      </MotionWrapper>
+
+      {/* Immagine galleria */}
+      <MotionWrapper animation="fadeIn" delay={0.4}>
+        <img
+          className="w-100"
+          src={currentProduct.gallery_product1}
+          alt=""
+        />
+      </MotionWrapper>
     </>
   );
 }
