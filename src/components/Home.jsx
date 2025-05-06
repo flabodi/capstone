@@ -35,9 +35,7 @@ function Home() {
           </MotionWrapper>
           
           <MotionWrapper className="ms-5 mb-sm-4 ps-5" animation="fadeInUp" delay={0.3}>
-            <a className="text-decoration-none" href="">
-              CHI SIAMO
-            </a>
+           
           </MotionWrapper>
         </Col>
         <Col xs={12} md={6} className="p-0  order-md-2"  >

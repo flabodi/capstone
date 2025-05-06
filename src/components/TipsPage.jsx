@@ -23,7 +23,8 @@ function TipsPage() {
           controls={controls}
           className="ms-3 pt-5 text-center"
         >
-          <h1>TIPS</h1>
+          <h1>EDUCAZIONE ALCOLICA</h1>
+          <hr className="mx-5"></hr>
         </MotionWrapper>
 
         {/* Sezione Tips con fadeIn all'avvio */}

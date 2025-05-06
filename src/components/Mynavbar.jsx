@@ -63,7 +63,7 @@ function MyNavbar() {
                 PRODOTTI
               </Nav.Link>
               <Nav.Link as={Link} to="/tips" className="fw-semibold text-center">
-                TIPS
+                EDUCAZIONE ALCOLICA
               </Nav.Link>
               <form 
                 className="position-relative w-25" 

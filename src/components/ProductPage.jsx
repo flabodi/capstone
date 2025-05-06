@@ -157,7 +157,7 @@ function ProductDetail() {
       {/* Immagine galleria */}
       <MotionWrapper animation="fadeIn" delay={0.4}>
         <img
-          className="w-100"
+          className="w-100 big-img-mobile "
           src={currentProduct.gallery_product1}
           alt=""
         />
