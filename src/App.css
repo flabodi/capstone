@@ -369,7 +369,7 @@ footer {
 }
 
 /* Extra small screen adjustments */
-@media (max-width: 380px) {
+@media (min-width: 360px) {
   .recipe-title h1 {
     font-size: 1.4rem;
   }
@@ -386,8 +386,8 @@ footer {
     font-size: 0.85rem;
   }
   .accordeon-container {
-    height: 600px;
-    margin-top: 140px;
+    height: 650px;
+    margin-top: 110px;
   }
   .accordeon-txt {
     width: 300px !important;
@@ -397,7 +397,7 @@ footer {
 }
         
 
-@media (max-width: 380px) {
+@media (min-width: 360px) {
   .categories-wrapper {
     height: 5rem;
     margin: 2rem 0;
@@ -437,7 +437,7 @@ footer {
 }
 
 
-@media (max-width: 380px) {
+@media (min-width: 360px) {
   .big-img-mobile {
     height: 100vh;
     object-fit: cover;
