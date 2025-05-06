@@ -65,9 +65,9 @@ function ProductCarousel({ featuredOnly = false, maxProducts = 5 }) {
 
   return (
     <div className="wrapper">
-      <h2 className="text-center">
+      <h1 className="text-center">
         BEVI COME UN NOBILE. <br /> VIVI COME TI PARE
-      </h2>
+      </h1>
       <div className="carouselContainer">
         <div
           className="viewport"
