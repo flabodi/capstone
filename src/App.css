@@ -54,6 +54,15 @@ footer {
   flex-shrink: 0;
 }
 
+
+.navbar-collapse.collapse.show {
+  background-color: #a8774a;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100vw;
+}
+
 .home-row {
   max-height: 800px;
   flex-shrink: 0;

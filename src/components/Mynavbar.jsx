@@ -42,7 +42,7 @@ function MyNavbar() {
     <div className="w-100">
       {/* Navbar */}
       <Navbar expand="md" className="w-100 rounded-0">
-        <Container>
+        <Container fluid >
           <Navbar.Brand as={Link} to="/" className="text-dark">
             SPIRITI NOBILI
           </Navbar.Brand>
@@ -54,7 +54,7 @@ function MyNavbar() {
             <i className="bi bi-cup-straw text-dark"> </i>
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-3 w-100 justify-content-center align-items-center gap-3">
+            <Nav className=" w-100 justify-content-center align-items-center gap-3">
               <Nav.Link
                 as={Link}
                 to="/product"
