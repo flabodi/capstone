@@ -49,7 +49,7 @@ export default function Accordion() {
             </div>
 
             {activeIndex === index && (
-              <div className="ms-5 imb-font w-50 accordeon-txt ">{item.content}</div>
+              <div className="ms-5 imb-font w-50  accordeon-txt ">{item.content}</div>
             )}
           </div>
         ))}

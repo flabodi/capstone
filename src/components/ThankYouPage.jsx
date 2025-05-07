@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function ThankYouPage() {
   const navigate = useNavigate();
-  const orderNumber = Math.floor(1000 + Math.random() * 9000); // Genera un numero ordine casuale a 4 cifre
+  const orderNumber = Math.floor(1000 + Math.random() * 9000); 
   
   return (
     <Container className="my-5 text-center">

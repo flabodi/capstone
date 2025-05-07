@@ -12,7 +12,7 @@ function TipsSection() {
     (state) => state.tipsStories
   );
 
-  // prendi l'id del tip da espandere (se arrivi da Home)
+
   const initExpandId = location.state?.expandTipId;
   const [expandedTips, setExpandedTips] = useState(
     initExpandId ? { [initExpandId]: true } : {}
@@ -22,7 +22,6 @@ function TipsSection() {
     if (status === "idle") dispatch(fetchTipsStories());
   }, [dispatch, status]);
 
-  // quando arrivi su /tips con uno expandTipId, scrolla lì
   useEffect(() => {
     if (initExpandId) {
       const el = document.getElementById(`tip-${initExpandId}`);
@@ -60,7 +59,7 @@ function TipsSection() {
           const isExpanded = !!expandedTips[tip.id];
           return (
             <Col key={tip.id}>
-              {/* assegna l'id qui */}
+            
               <div id={`tip-${tip.id}`} className="h-100 p-3 border rounded">
                 <h3>{tip.title}</h3>
                 <p

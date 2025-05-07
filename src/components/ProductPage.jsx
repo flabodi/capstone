@@ -50,7 +50,7 @@ function ProductDetail() {
     );
   }
 
-  // Funzione per estrarre il testo dalla descrizione strutturata
+  
   const getDescriptionText = () => {
     if (!currentProduct.description || !currentProduct.description.length)
       return "";
@@ -69,11 +69,11 @@ function ProductDetail() {
 
   return (
     <>
-      {/* Animazione della sezione prodotto */}
+      
       <MotionWrapper animation="fadeInUp" delay={0.1}>
         <Container fluid>
           <Row className="my-4">
-            {/* Colonna testi - a sinistra su md+ e sotto su sm */}
+          
             <Col
               xs={12}
               sm={12}
@@ -136,7 +136,7 @@ function ProductDetail() {
               </MotionWrapper>
             </Col>
 
-            {/* Colonna immagini - a destra su md+ e sopra su sm */}
+          
             <Col
               xs={12}
               sm={12}
@@ -154,7 +154,7 @@ function ProductDetail() {
         </Container>
       </MotionWrapper>
 
-      {/* Immagine galleria */}
+     
       <MotionWrapper animation="fadeIn" delay={0.4}>
         <img
           className="w-100 big-img-mobile "

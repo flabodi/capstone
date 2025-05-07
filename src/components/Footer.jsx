@@ -5,7 +5,7 @@ function Footer() {
     <footer className="py-5 imb-font ">
       <Container>
         <Row>
-          {/* Colonne: full-width su xs, 1/3 su sm+ */}
+       
           <Col xs={12} sm={4} className="mb-4 mb-sm-0 text-center text-sm-start">
             <h5>Spiriti Nobili</h5>
             <p>

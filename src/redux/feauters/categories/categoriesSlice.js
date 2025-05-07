@@ -3,11 +3,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const LOCAL_API = "http://localhost:1337/api";
 const CLOUD_API = "https://lovable-animal-afb45367af.strapiapp.com/api";
 
-// Funzione di utilità per il fetch con fallback
+
 const fetchWithFallback = async (endpoint) => {
-  // Richiesta locale con timeout
+  
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 secondi di timeout
+  const timeoutId = setTimeout(() => controller.abort(), 3000); 
   
   try {
     const response = await fetch(`${LOCAL_API}/${endpoint}`, {
@@ -24,7 +24,7 @@ const fetchWithFallback = async (endpoint) => {
     clearTimeout(timeoutId);
     console.log(`API locale fallita: ${error.message}. Provo con l'API cloud...`);
     
-    // Fallback su API cloud
+   
     const cloudResponse = await fetch(`${CLOUD_API}/${endpoint}`);
     
     if (!cloudResponse.ok) {

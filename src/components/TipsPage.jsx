@@ -4,18 +4,18 @@ import { MotionWrapper } from "./MotionWrapper";
 import TipsSection from "./TipsSection";
 
 function TipsPage() {
-  // Controller per animazioni
+  
   const controls = useAnimation();
 
   useEffect(() => {
-    // Avvia le animazioni non appena il componente monta
+    
     controls.start("visible");
   }, [controls]);
 
   return (
     <>
       <div className="tips-style">
-        {/* Titolo con fadeInUp all'avvio */}
+
         <MotionWrapper
           animation="fadeInUp"
           delay={0.1}
@@ -27,7 +27,6 @@ function TipsPage() {
           <hr className="mx-5"></hr>
         </MotionWrapper>
 
-        {/* Sezione Tips con fadeIn all'avvio */}
         <MotionWrapper
           animation="fadeIn"
           delay={0.2}

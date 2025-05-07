@@ -22,7 +22,7 @@ function CartPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormSubmitted(true);
-    // Simula un ritardo per il checkout
+  
     setTimeout(() => {
       navigate("/thank-you");
       dispatch(clearCart());

@@ -40,7 +40,7 @@ function Home() {
         </Col>
         <Col xs={12} md={6} className="p-0  order-md-2"  >
           <MotionWrapper className="home-img " animation="fadeIn" delay={0.2}>
-            {/* La div dell'immagine è ora all'interno di MotionWrapper */}
+           
           </MotionWrapper>
         </Col>
       </Row>

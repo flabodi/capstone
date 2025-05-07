@@ -1,4 +1,4 @@
-// src/components/ProductsList.jsx
+
 import { useEffect } from "react";
 import { Col, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ function ProductsList({ featuredOnly = false }) {
   const dispatch = useDispatch();
 
   const { products, status, error } = useSelector((state) => state.products);
-  // Recupera i filtri dallo slice: searchQuery e selectedCategory
+  
   const { searchQuery, selectedCategory } = useSelector(
     (state) => state.filters
   );
@@ -37,26 +37,26 @@ function ProductsList({ featuredOnly = false }) {
     );
   }
 
-  // Partiamo dall'array completo dei prodotti
+ 
   let filteredProducts = products;
 
-  // Se siamo in modalità featuredOnly, filtra per i prodotti in evidenza
+
   if (featuredOnly) {
     filteredProducts = filteredProducts.filter(
       (product) => product.feautured === true
     );
   }
 
-  // Se c'è un testo di ricerca, filtriamo per nome
+
   if (searchQuery && searchQuery.trim() !== "") {
     filteredProducts = filteredProducts.filter((product) =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }
-  // Se non c'è una ricerca e non siamo in modalità featuredOnly, applichiamo il filtro per categoria
+
   else if (!featuredOnly && selectedCategory !== null) {
     filteredProducts = filteredProducts.filter((product) => {
-      // Controlla che la relazione 'product' sia popolata
+     
       if (!product.product) return false;
       return product.product.id === selectedCategory;
     });

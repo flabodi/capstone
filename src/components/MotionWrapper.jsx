@@ -26,11 +26,7 @@ const variants = {
   }
 };
 
-/**
- * MotionWrapper supporta due modalità di animazione:
- * - whileInView (default): anima quando entra in viewport
- * - useAnimate: anima quando 'controls' viene avviato
- */
+
 export const MotionWrapper = ({
   children,
   animation = "fadeInUp",

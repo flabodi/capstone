@@ -14,7 +14,7 @@ export default function RecipeSection() {
   if (status === "loading") return <p>Caricamento…</p>;
   if (status === "failed") return <p>Errore: {error}</p>;
 
-  // **Prendo solo i primi 2 prodotti** indipendentemente da quanti ne ritorna l'API
+
   const primiDue = products.slice(0, 2);
 
   return (
@@ -32,7 +32,7 @@ export default function RecipeSection() {
 
       <Row>
         {primiDue.map((p) => {
-          // split degli ingredienti
+   
           const ingredients = p.ingedients.split(",").map((i) => i.trim());
 
           return (

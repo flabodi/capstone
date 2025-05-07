@@ -36,12 +36,12 @@ function CategoriesSlider() {
 
   return (
     <div className="categories-wrapper">
-      {/* Track Line */}
+  
       {!isMobile && <div className="categories-line" />}
       {!isMobile && <div className="categories-circle" style={{ left: "0%" }} />}
       {!isMobile && <div className="categories-circle" style={{ left: "100%" }} />}
 
-      {/* Scrollable labels on mobile, positioned labels on desktop */}
+   
       <div className={isMobile ? "categories-scroll" : ""}>
         {categories.map((cat, idx) => (
           <span
@@ -59,7 +59,7 @@ function CategoriesSlider() {
         ))}
       </div>
 
-      {/* Knob */}
+    
       {!isMobile && <div className="categories-knob" style={{ left: positions[selectedIndex] }} />}
     </div>
   );
