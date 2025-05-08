@@ -1,12 +1,39 @@
-# React + Vite
+# Capstone Project – Spiriti Nobili
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Benvenuto nel mio progetto **Spiriti Nobili**, un e-commerce moderno per drink in bottiglietta di alta qualità.  
+Questo progetto è stato sviluppato come capstone finale, con un'attenzione particolare all'esperienza utente, alla gestione dinamica dei contenuti e a un design visivo coerente.
 
-Currently, two official plugins are available:
+## 🎯 Perché questo progetto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Ho scelto questo argomento per via della mia passione per il mondo del bar, che è stato anche il mio lavoro prima di intraprendere questo nuovo percorso.  
+Con **Spiriti Nobili** ho voluto trasmettere a chiunque l’arte del bere, e un po’ della mia passione, in un modo semplice e coinvolgente, senza mai risultare troppo tecnico o pesante.  
+Per me ogni bottiglietta racconta una storia, e questo progetto è stato il mio modo di condividerla.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tecnologie Utilizzate
+
+### Frontend
+- **React** con **Vite** per un caricamento veloce
+- **Redux Toolkit** per la gestione dello stato
+- **React-Bootstrap** per componenti UI responsivi
+- **CSS/Bootstrap** per lo stile personalizzato
+
+### Backend
+- **Strapi** (Headless CMS) per la gestione delle API:
+  - Prodotti
+  - Categorie
+  - Tips & Stories
+
+## 📦 Funzionalità Principali
+
+- ✅ Visualizzazione dinamica dei prodotti
+- ✅ Filtraggio e ricerca per categoria
+- ✅ Pagina dettagliata del prodotto
+- ✅ Sistema di storie e tips integrati
+- ✅ Gestione centralizzata dello stato con Redux
+- ✅ Responsive design
+
+## 🖼️ Design & UI
+
+Ogni drink è rappresentato con immagini curate: sfondo monocromatico, luce soffusa e focus sulla bottiglietta.  
+Abbiamo curato l'estetica per valorizzare l'esperienza visiva dell'utente.
