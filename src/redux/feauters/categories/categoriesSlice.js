@@ -1,11 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const LOCAL_API = "http://localhost:1337/api";
-const CLOUD_API = "https://lovable-animal-afb45367af.strapiapp.com/api";
-
+const CLOUD_API = "https://cocktail-api-data-2.onrender.com";
 
 const fetchWithFallback = async (endpoint) => {
-  
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 3000); 
   
@@ -24,7 +22,6 @@ const fetchWithFallback = async (endpoint) => {
     clearTimeout(timeoutId);
     console.log(`API locale fallita: ${error.message}. Provo con l'API cloud...`);
     
-   
     const cloudResponse = await fetch(`${CLOUD_API}/${endpoint}`);
     
     if (!cloudResponse.ok) {
@@ -38,8 +35,9 @@ const fetchWithFallback = async (endpoint) => {
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
-    const data = await fetchWithFallback("categories?populate=*");
-    return data.data;
+    // ✅ Rimosso ?populate=* e data.data
+    const data = await fetchWithFallback("categories");
+    return data; // json-server restituisce direttamente l'array
   }
 );
 
